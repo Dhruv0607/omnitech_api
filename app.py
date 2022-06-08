@@ -7,6 +7,10 @@ from payload import send_command_req
 app = Flask(__name__)
 api = Api(app)
 
+class Home(Resource):
+    def get(self):
+        return "Hello"
+
 class ColorCommand(Resource):
     def get(self):
         return {'rgbw': settings.rgbw}
@@ -21,6 +25,7 @@ class ColorCommand(Resource):
         return color, 201
 
 api.add_resource(ColorCommand, '/commandC')  #http:127.0.0.1:5000/commandC - post and get
+api.add_resource(Home, '/')
 
 app.run(port = 5000, debug = True)
 
