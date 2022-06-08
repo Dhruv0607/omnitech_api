@@ -1,2 +1,1 @@
-web: uwsgi uwsgi.ini $PORT
-web: python app.py $PORT
+web: gunicorn app:app
