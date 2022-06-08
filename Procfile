@@ -1,2 +1,2 @@
-worker: uwsgi uwsgi.ini
-worker: python app.py
+web: uwsgi uwsgi.ini $PORT
+web: python app.py $PORT
