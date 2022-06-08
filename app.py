@@ -27,7 +27,7 @@ class ColorCommand(Resource):
 api.add_resource(ColorCommand, '/commandC')  #http:127.0.0.1:5000/commandC - post and get
 api.add_resource(Home, '/')
 
-app.run(port = 5000, debug = True)
+app.run(debug = True)
 
 '''
 TODO: 
