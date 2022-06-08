@@ -1,4 +1,5 @@
-import settings, os
+import settings
+import os
 from flask import Flask, request
 from flask_restful import Resource, Api
 from payload import payload_calc
