@@ -31,4 +31,4 @@ six==1.16.0
 urllib3==1.26.9
 Werkzeug==2.1.2
 xmltodict==0.13.0
-os==3.7
+
