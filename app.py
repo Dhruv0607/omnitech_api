@@ -15,7 +15,7 @@ class Home(Resource):
 
 class ColorCommand(Resource):
     def get(self):
-        return {'rgbw': settings.rgbw}
+        return {'packet': settings.packet}
 
     def post(self):
         settings.init()
@@ -24,7 +24,7 @@ class ColorCommand(Resource):
         settings.rgbw.append(color)
         payload_calc("C")
         # send_command_req()
-        return settings.packet, 201
+        return color, 201
 
 api.add_resource(ColorCommand, '/commandC')
 api.add_resource(Home, '/')
