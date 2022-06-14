@@ -1,7 +1,7 @@
 import settings
 import requests
 
-ip = '192.168.1.109'
+# ip = '169.254.65.49'
 
 '''
 This functions decides the parameter "param" to send to the packet_gen function

@@ -15,7 +15,7 @@ class Home(Resource):
 
 class ColorCommand(Resource):
     def get(self):
-        return {'packet': settings.packet}
+        return {'packet': settings.packet, 'rgbw': settings.rgbw}
 
     def post(self):
         settings.init()
