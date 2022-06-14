@@ -20,7 +20,7 @@ class ColorCommand(Resource):
     def post(self):
         settings.init()
         data = request.get_json()
-        color = {'red': data['red'], 'green': data['green'], 'blue': data['blue'], 'white': data['white']}
+        color = {'red': int(data['red']), 'green': int(data['green']), 'blue': int(data['blue']), 'white': int(data['white'])}
         settings.rgbw.append(color)
         payload_calc("C")
         # send_command_req()
