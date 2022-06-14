@@ -30,7 +30,8 @@ Arguments: param - parameter received from the payload_calc function depending o
 def packet_gen(param, command):
     settings.packet_init()
     param_new = payload_gen(param)
-    crc = crc_calc(command, param_new, "4", "0")
+    command_to_hex = hex(ord(command))
+    crc = crc_calc(command_to_hex, param_new, "4", "0")
     settings.packet = settings.packet + command + "0004" + param + crc[2:] + "%0d%0a"
     print(settings.packet)
 
@@ -54,7 +55,8 @@ Arguments: command_val - represents command type being sent
 Returns the CRC value
 '''
 def crc_calc(command_val, param_val, val, debug_val):
-    crc_val = hex(int("43", 16) + int(param_val, 16) + int(val, 16) + int(debug_val, 16))
+    crc_val = hex(int(command_val, 16) + int(param_val, 16) + int(val, 16) + int(debug_val, 16))
+    print(hex(~int(crc_val, 16) & 0xffff))
     return hex(~int(crc_val, 16) & 0xffff)
 
 
@@ -62,11 +64,11 @@ def crc_calc(command_val, param_val, val, debug_val):
 '''
 This functions sends the command request to specified "ip" and "packet"
 '''
-def send_command_req():
-    print(f"command to ip: {ip}")
-    response = requests.post(f"http://{ip}/command?BROADCAST={settings.packet}")
-    response.close()
-    if response.status_code == 202:
-        return True
-    else:
-        return False
+# def send_command_req():
+#     print(f"command to ip: {ip}")
+#     response = requests.post(f"http://{ip}/command?BROADCAST={settings.packet}")
+#     response.close()
+#     if response.status_code == 202:
+#         return True
+#     else:
+#         return False

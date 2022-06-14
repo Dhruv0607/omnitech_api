@@ -2,7 +2,7 @@ import settings
 from flask import Flask, request
 from flask_restful import Resource, Api
 from payload import payload_calc
-from payload import send_command_req
+# from payload import send_command_req
 
 app = Flask(__name__)
 api = Api(app)
@@ -23,8 +23,8 @@ class ColorCommand(Resource):
         color = {'red': data['red'], 'green': data['green'], 'blue': data['blue'], 'white': data['white']}
         settings.rgbw.append(color)
         payload_calc("C")
-        send_command_req()
-        return color, 201
+        # send_command_req()
+        return settings.packet, 201
 
 api.add_resource(ColorCommand, '/commandC')
 api.add_resource(Home, '/')
@@ -37,4 +37,5 @@ TODO:
     1. Calculate bytes of string (payload)
     2. Change byte size from hardcoded 0004 to 1.
     3. Link frontend and backend
+    4. hex(ord("C")) -> convert C to 43
 '''
