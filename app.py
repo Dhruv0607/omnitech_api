@@ -24,7 +24,7 @@ class ColorCommand(Resource):
         settings.rgbw.append(color)
         payload_calc("C")
         # send_command_req()
-        return "Success", 201
+        return 201
 
 api.add_resource(ColorCommand, '/commandC')
 api.add_resource(Home, '/')
